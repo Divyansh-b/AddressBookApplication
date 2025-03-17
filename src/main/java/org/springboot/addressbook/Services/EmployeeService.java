@@ -49,10 +49,10 @@ public class EmployeeService implements IEmployeeInterface {
         return resultDTO;
     }
     public EmployeeDTO createaddressBook(EmployeeDTO employeeDTO,Long id) {
-        EmployeeEntity employeeEntity = new EmployeeEntity(employeeDTO.getName(), employeeDTO.getEmail(), id);
+        EmployeeEntity employeeEntity = new EmployeeEntity(employeeDTO.getName(), employeeDTO.getEmail());
         EmployeeEntity savedEmployee = employeeRepositories.save(employeeEntity);
         EmployeeDTO resultDTO = new EmployeeDTO(savedEmployee.getName(), savedEmployee.getEmail(), savedEmployee.getId());
-                return resultDTO;
+        return resultDTO;
     }
 
     @Override

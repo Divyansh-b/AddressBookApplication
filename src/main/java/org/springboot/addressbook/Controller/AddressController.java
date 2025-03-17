@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/address")
 public class AddressController {
@@ -62,6 +64,31 @@ public class AddressController {
         return employeeInterface.ressponseDTO("Success API Triggered Delete {id}", "Success");
     }
 
+    // UC3- REST API Using DataBases
+    @GetMapping("/api2/get/{id}")
+    public EmployeeDTO getAddressById2(@PathVariable Long id){
+        return employeeInterface.getEmployeeById(id);
+    }
+    @PostMapping("/api2/create")
+    public EmployeeDTO createAddress2(@RequestBody EmployeeDTO employeeDTO){
+        return employeeInterface.createaddressBook(employeeDTO,employeeDTO.getId());
+    }
+    @GetMapping("/api2/displayall")
+    public List<EmployeeDTO> displayAllAddress2(){
+        return employeeInterface.displayAllEmployee();
+    }
+    @PutMapping("/api2/update/{id}")
+    public EmployeeDTO updateAddress2(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long id){
+        return employeeInterface.updateAddress(employeeDTO,id);
+    }
+    @GetMapping("/api2/delete/{id}")
+    public String deleteAddress2(@PathVariable Long id){
+        return employeeInterface.deleteAddress(id);
+    }
+    @GetMapping("/api2/cleatall")
+    public String cleatAllAddress2(){
+        return employeeInterface.cleatAllEmployee();
+    }
 
 
 }
